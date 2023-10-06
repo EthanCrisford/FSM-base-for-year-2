@@ -1,4 +1,3 @@
-
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -8,7 +7,6 @@ namespace Player
     {
         protected PlayerScript player;
         protected StateMachine sm;
-
 
         // base constructor
         protected State(PlayerScript player, StateMachine sm)
@@ -21,24 +19,27 @@ namespace Player
         public virtual void Enter()
         {
             //Debug.Log("This is base.enter");
+
         }
 
         public virtual void HandleInput()
         {
+
         }
 
         public virtual void LogicUpdate()
         {
+
         }
 
         public virtual void PhysicsUpdate()
         {
+
         }
 
         public virtual void Exit()
         {
+
         }
-
     }
-
 }

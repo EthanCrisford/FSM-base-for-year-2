@@ -1,6 +1,6 @@
-
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+
 namespace Player
 {
     public class RunningState : State
@@ -8,6 +8,7 @@ namespace Player
         // constructor
         public RunningState(PlayerScript player, StateMachine sm) : base(player, sm)
         {
+
         }
 
         public override void Enter()

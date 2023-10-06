@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 namespace Player
 {
     public class StateMachine : MonoBehaviour
@@ -23,14 +22,11 @@ namespace Player
             LastState = CurrentState;
             CurrentState = newState;
             newState.Enter();
-
-            
         }
 
         public State GetState()
         {
             return CurrentState;
         }
-
     }
 }

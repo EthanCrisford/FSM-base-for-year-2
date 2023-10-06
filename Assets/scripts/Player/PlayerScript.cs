@@ -6,23 +6,20 @@ using UnityEngine.VFX;
 
 namespace Player
 {
-
-
     public class PlayerScript : MonoBehaviour
     {
         public Rigidbody2D rb;
 
         public float xv, yv;
         public float runSpeed = 6;
-        
+        public bool isJumping;
 
         // variables holding the different player states
         public StandingState standingState;
         public RunningState runningState;
-
+        public JumpState jumpState;
+       
         public StateMachine sm;
-
-
 
         // Start is called before the first frame update
         void Start()
@@ -33,6 +30,7 @@ namespace Player
             // add new states here
             standingState = new StandingState(this, sm);
             runningState = new RunningState(this, sm);
+            jumpState = new JumpState(this, sm);
 
             // initialise the statemachine with the default state
             sm.Init(standingState);
@@ -51,17 +49,16 @@ namespace Player
 
             s = string.Format("current xv={0} yv={1}", xv, yv);
             UIscript.ui.DrawText(s);
+
+            s = string.Format("isJumping =" + isJumping);
+            UIscript.ui.DrawText(s);
         }
-
-
 
         void FixedUpdate()
         {
             sm.CurrentState.PhysicsUpdate();
             rb.velocity = new Vector2(xv, yv);
         }
-
-
 
         public void CheckForRun()
         {
@@ -80,7 +77,6 @@ namespace Player
             }
         }
 
-
         public void CheckForStand()
         {
                 if (Input.GetKey("left") == false) // key held down
@@ -90,11 +86,14 @@ namespace Player
                         sm.ChangeState(standingState);
                     }
                 }
-
         }
-
-
-
+        
+        public void CheckForJump()
+        {
+            if (Input.GetKey("spacebar") == false)
+            { 
+                isJumping = false;
+            }
+        }
     }
-
 }
