@@ -15,7 +15,7 @@ namespace Player
         {
             base.Enter();
             player.xv = player.yv = 0;
-            //rigidbody2D.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+            //Rigidbody2D.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
 
         }
 
